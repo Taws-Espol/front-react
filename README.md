@@ -10,7 +10,7 @@
 
 2. Change directory
 
-`cd social-taws
+`cd social-taws`
 
 3. Install dependencies
 
