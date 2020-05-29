@@ -7,14 +7,14 @@ function Blog(props) {
   const sidebar = (
     <ul>
       {props.posts.map((post) =>
-        <li>
+        <li key={post.id}>
           {post.title}
         </li>
       )}
     </ul>
   );
   const content = props.posts.map((post) =>
-    <div>
+    <div key={post.id}>
       <h3>{post.title}</h3>
       <p>{post.content}</p>
     </div>
