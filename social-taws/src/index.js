@@ -3,9 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+import React, { useState, useEffect } from 'react';
+
 function Example() {
-  // Declaración de una variable de estado que llamaremos "count"
   const [count, setCount] = useState(0);
+
+  // De forma similar a componentDidMount y componentDidUpdate
+  useEffect(() => {
+    // Actualiza el título del documento usando la API del navegador
+    document.title = `You clicked ${count} times`;
+  });
 
   return (
     <div>
