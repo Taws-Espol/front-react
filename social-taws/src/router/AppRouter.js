@@ -6,7 +6,7 @@ const AppRouter = () =>{
   return(
     <Router>
       <Switch>
-        <Route path="/" component={Profile}/>
+        <Route path="/profile" component={Profile}/>
         <Redirect from="*" to="/" />
       </Switch>
     </Router>
