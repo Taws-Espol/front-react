@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import AppRouter from './router/AppRouter';
 import * as serviceWorker from './serviceWorker';
-
-const name = 'Raul'
 
 ReactDOM.render(
   <React.StrictMode>
-  <h1>My name is: {name}</h1>
-  <h2>My favorite number is: {5+4}</h2>
+    <AppRouter/>
   </React.StrictMode>,
   document.getElementById('root')
 );
