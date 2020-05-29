@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+const name = 'Raul'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+  <h1>My name is: {name}</h1>
+  <h2>My favorite number is: {5+4}</h2>
   </React.StrictMode>,
   document.getElementById('root')
 );
