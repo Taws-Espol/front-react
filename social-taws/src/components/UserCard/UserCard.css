@@ -1,7 +1,6 @@
-.container{
-  padding: 5px;
-}
-
-.img-container{
-  text-align: center;
+.profile-thumb{
+  position: relative;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
 }
