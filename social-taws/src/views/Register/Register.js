@@ -14,8 +14,6 @@ const Register = () =>{
     username: '',
     password: ''
   });
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [registering, setRegistering] = useState(false);
   function handleChange(e) {
@@ -36,12 +34,10 @@ const Register = () =>{
     userService.register(user)
       .then(
         user => {
-          setSuccess(true);
           setRegistering(false);
           setAlert({message:'Registration successful',type:'alert-success'});
         },
         error =>{
-          setError(true);
           setAlert({message:'Error on registration',type:'alert-danger'});
         }
       );
