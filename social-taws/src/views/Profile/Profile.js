@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './Profile.css';
 import UserCard from '../../components/UserCard/UserCard';
 import PostBox from '../../components/PostBox/PostBox';
@@ -6,6 +6,11 @@ import NavBar from '../../components/NavBar/NavBar';
 import PostList from '../../components/PostList/PostList';
 
 const Profile = () =>{
+  const [posts,setPosts] = useState([]);
+
+  const addNewPost = (postData)=>{
+    setPosts([...posts,postData]);
+  } 
   return(
     <>
       <NavBar/>
@@ -17,8 +22,8 @@ const Profile = () =>{
             </aside>
           </div>
           <div className="col-9">
-            <PostBox/>
-            <PostList/>
+            <PostBox onSubmit={addNewPost}/>
+            <PostList posts={posts}/>
           </div>
         </div>
       </div>

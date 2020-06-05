@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './Register.css';
 
 const Register = () =>{
@@ -24,7 +25,7 @@ const Register = () =>{
                     <input type="password" name="password" className="form-control"/>
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-primary">Register</button>
+                    <button className="btn btn-blue">Register</button>
                     <Link to="/login" className="btn btn-link">Cancel</Link>
                 </div>
             </form>

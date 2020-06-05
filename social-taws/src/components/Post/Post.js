@@ -1,9 +1,15 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './Post.css'
 
 
-const liked = false;
-const Post = () =>{
+const Post = (props) =>{
+    const [liked,setLiked] = useState(false);
+    const postData = props;
+
+    const handleClick = () =>{
+        setLiked(!liked);
+    }
+
     return(
         <>
             <div className="container-fluid rounded mb-2 bg-white p-3">
@@ -16,12 +22,12 @@ const Post = () =>{
                             </div>
                         </div>
                         <div className="row py-2 px-3">
-                            <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque voluptate quibusdam soluta iusto praesentium eaque sapiente esse veritatis facere ab cupiditate minima assumenda, rem laudantium rerum fugit vero. Tempore, rem!</p>
+                            <p className="mb-0">{postData.content}</p>
                         </div>
                     </div>
                     <div className="col-2 my-3">
                         <div className="text-center">
-                            <button type="button" className="btn btn-blue btn-lg btn-block">{liked ? <i class="fas fa-thumbs-up"></i>:<i className="far fa-thumbs-up"></i>}</button>
+                            <button type="button" onClick={handleClick} className="btn btn-blue btn-lg btn-block">{liked ? <i class="fas fa-thumbs-up"></i>:<i className="far fa-thumbs-up"></i>}</button>
                         </div>
                     </div>
                 </div>                
