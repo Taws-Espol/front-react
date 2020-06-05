@@ -5,7 +5,7 @@ import './Login.css';
 const Login = () =>{
   return (
     <>
-      <div className="col-lg-8 offset-lg-2">
+      <div className="col-lg-8 offset-lg-2 mt-3">
             <h2>Login</h2>
             <form name="form">
                 <div className="form-group">
