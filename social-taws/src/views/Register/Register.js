@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link ,useHistory} from 'react-router-dom';
 import {userService} from '../../services/'
 import './Register.css';
 
@@ -16,6 +16,7 @@ const Register = () =>{
   });
   const [submitted, setSubmitted] = useState(false);
   const [registering, setRegistering] = useState(false);
+  const history = useHistory();
   function handleChange(e) {
     const { name, value } = e.target;
     setUser(user => ({ ...user, [name]: value }));
@@ -35,10 +36,11 @@ const Register = () =>{
       .then(
         user => {
           setRegistering(false);
-          setAlert({message:'Registration successful',type:'alert-success'});
+          history.push("/login");
         },
         error =>{
-          setAlert({message:'Error on registration',type:'alert-danger'});
+          setRegistering(false);
+          setAlert({message:'Error on Registration',type:'alert-danger'});
         }
       );
   }

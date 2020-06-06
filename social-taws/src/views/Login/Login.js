@@ -1,5 +1,6 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React,{useState, useEffect} from 'react';
+import {Link, useHistory} from 'react-router-dom';
+import {userService} from '../../services';
 import './Login.css';
 
 const Login = () =>{
@@ -7,10 +8,14 @@ const Login = () =>{
     username: '',
     password: ''
   });
+  const [alert, setAlert] = useState({
+    message: '',
+    type: ''
+  });
   const [submitted, setSubmitted] = useState(false);
   const [loggingIn, setloggingIn] = useState(false);
   const { username, password } = inputs;
-
+  const history = useHistory();
   function handleChange(e) {
     const { name, value } = e.target;
     setInputs(inputs => ({ ...inputs, [name]: value }));
@@ -21,12 +26,34 @@ const Login = () =>{
 
     setSubmitted(true);
     if (username && password) {
-        
+        login(username, password);
     }
   }
+  // reset login status
+  useEffect(() => { 
+    userService.logout(); 
+  }, []);
+
+  function login(username,password){
+    setloggingIn(true);
+    userService.login(username,password)
+      .then(
+        user =>{
+          setloggingIn(false);
+          history.push("/");
+        },
+        error =>{
+          setloggingIn(false);
+          setAlert({message:'Error on Login',type:'alert-danger'})
+        }
+      );
+  }
+
+
   return (
     <>
-      <div className="col-lg-8 offset-lg-2">
+      <div className="col-lg-8 offset-lg-2 mt-3">
+            {alert.message && <div className={`alert ${alert.type}`}>{alert.message}</div>}
             <h2>Login</h2>
             <form name="form" onSubmit={handleSubmit}>
                 <div className="form-group">

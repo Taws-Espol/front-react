@@ -1,20 +1,38 @@
 import React,{useState} from 'react';
+import {postService} from '../../services';
 
 import './PostBox.css'
 
 const  PostBox = (props) =>{
   const [postContent,setPostContent] = useState('');
+  const [posting, setPosting] = useState(false);
 
   const handleSubmit = (event) =>{
     event.preventDefault();
-    props.onSubmit({content:postContent});
-    setPostContent('');
+    addPost();
   }
 
   const handleChange = (e) => {
     const { value } = e.target;
     setPostContent(value);
   }
+
+  function addPost(){
+    setPosting(true);
+    postService.addPost({content:postContent,user_id:props.user,liked:false})
+      .then(
+        res =>{
+          setPosting(false);
+          props.onSubmit({id:res,content:postContent,user_id:props.user,liked:false});
+          setPostContent('');
+        },
+        error =>{
+          setPosting(false);
+          console.log(error);
+        }
+      )
+  }
+
 
   return(
     <>
@@ -24,7 +42,10 @@ const  PostBox = (props) =>{
             <textarea className="form-control" id="post-textarea" onChange={handleChange} rows="3" value={postContent} placeholder="Type something here"></textarea>
           </div>
           <div className="text-right p-2">
-            <button type="submit" className="btn btn-blue" disabled={!postContent}>Blogit</button>
+            <button type="submit" className="btn btn-blue" disabled={!postContent}>
+              {posting && <span className="spinner-border spinner-border-sm mr-1"></span>}
+              Blogit
+            </button>
           </div>
         </form>
       </div>

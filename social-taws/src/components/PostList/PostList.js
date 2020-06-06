@@ -5,7 +5,7 @@ const PostList = (props) => {
     return ( 
         <>
             <div className="bg-light shadow-sm rounded p-3 mb-4">
-                {props.posts.map(post => <Post {...post}/>)}
+                {props.posts.map(post => <Post {...post} key={post.id}/>)}
             </div>
         </>
     );
