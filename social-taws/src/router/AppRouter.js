@@ -11,7 +11,7 @@ const AppRouter = () =>{
       <Switch>
         <Route path="/register" component={Register}/>
         <Route path="/login" component={Login}/>
-        <PrivateRoute path="/" component={Profile}/>
+        <Route path="/" component={Profile}/>
         <Redirect from="*" to="/" />
       </Switch>
     </Router>

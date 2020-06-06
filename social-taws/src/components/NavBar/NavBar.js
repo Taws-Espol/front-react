@@ -4,7 +4,10 @@ import "./NavBar.css"
 const NavBar = () =>{
     return(
         <>
-          <h1>NavBar</h1>
+          <nav className="navbar bg-blue">
+            <a href="/" className="taws-nav">Taws</a>
+            <Link to="/login" className="btn btn-link btn-logout">Logout</Link>
+          </nav>
         </>
     );
 }

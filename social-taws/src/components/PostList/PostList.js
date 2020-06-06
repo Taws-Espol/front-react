@@ -1,10 +1,12 @@
 import React from 'react';
 import './PostList.css';
 import Post from '../Post/Post';
-const PostList = () => {
+const PostList = (props) => {
     return ( 
         <>
-          <h1>PostList</h1>
+          <div className="bg-light shadow-sm rounded p-3 mb-4">
+            {props.posts.map(post=><Post {...post} key={post.id}/>)}
+          </div>
         </>
     );
 }
